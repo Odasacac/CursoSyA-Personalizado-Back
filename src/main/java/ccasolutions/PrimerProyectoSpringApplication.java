@@ -61,3 +61,22 @@ public class PrimerProyectoSpringApplication
 //4 - Controlador, para que otras aplicaciones puedan consumir los servicios.
 
 //¿Se puede hacer que los metodos de IMensajeSevicio se implementen directamente en el Controlador y asi ahorrarse la clase MensajeServicio? SI
+
+//De hecho se pueden hacer todos los metodos directamente en el controlador, ver el metodo borrarMensaje.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

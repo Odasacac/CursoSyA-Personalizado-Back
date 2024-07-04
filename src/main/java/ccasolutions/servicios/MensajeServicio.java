@@ -148,18 +148,40 @@ public class MensajeServicio implements IMensajeServicio
 
 
 
-	//Implementamos el metodo borrar()
-	@Override	
-	public ResponseEntity<Respuesta> borrar(Long id) 
+	//3 - Implementamos el metodo borrar()
+	//OJO que en este caso lo he hecho directamente todo en MensajeControlador
+	//Pero el metodo sería así
+	@Override
+	@Transactional
+	public ResponseEntity<Respuesta> borrarPorId(Long id) 
 	{
+		//Para ello, primero instanciamos un objeto respuesta
 		
-		return null;
+		Respuesta respuesta = new Respuesta();
+		
+		//Luego en un try/catch
+		
+		
+		try
+		{
+			mensajeDao.deleteById(id);
+			respuesta.setMetadata("Respuesta OK", "001", "Mensaje eliminado");
+			
+		}
+		catch (Exception e)
+		{
+			respuesta.setMetadata("Respuesta NOK", "01", "Error al eliminar el mensaje: " + e);
+			return new ResponseEntity<Respuesta>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR) ;
+		}
+		
+		//Se devuelve un objeto ResponseEntity tipo respuesta con un codigo Http 200
+		return new ResponseEntity<Respuesta>(respuesta, HttpStatus.OK) ;
+		}
+		
+		
+		
+		
+
+
+
 	}
-		
-		
-		
-		
-
-
-
-}
